@@ -3,80 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volt & Chill | Expert AC & Electrical Karachi</title>
+    <title>Volt & Chill | Karachi's Trusted 3D Expert AC & Electrical Technician</title>
     <style>
-        :root { --bg: #000000; --accent: #FFD700; --card: #121a31; --text: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        header { padding: 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 100; }
-        .brand { font-size: 24px; font-weight: bold; color: var(--accent); }
-        .hero { padding: 80px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000'); background-size: cover; }
-        .hero h1 { font-size: 45px; color: var(--accent); margin-bottom: 10px; }
-        .section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.3); }
-        .card h3 { color: var(--accent); margin-top: 0; }
-        .price { font-size: 24px; font-weight: bold; color: var(--accent); display: block; margin: 15px 0; }
-        .btn { display: inline-block; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; transition: 0.3s; width: 100%; text-align: center; box-sizing: border-box; }
-        .btn-wa { background: #25D366; color: white; margin-bottom: 10px; }
-        .btn-call { background: var(--accent); color: black; }
-        .review { font-style: italic; border-left: 3px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
-        .faq { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 10px; }
-        footer { padding: 40px; text-align: center; border-top: 1px solid #333; font-size: 14px; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        :root { --bg: #000000; --accent: #FFD700; --card: #121a31; --text: #ffffff; --3d-glow: #1a2a4a; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; perspective: 1000px; overflow-x: hidden;}
+        header { padding: 15px 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(0,0,0,0.8); z-index: 1000; backdrop-filter: blur(5px);}
+        .brand { font-size: 28px; font-weight: bold; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent);}
+        .hero { position: relative; padding: 120px 20px; text-align: center; color: #fff; transform-style: preserve-3d; animation: hero3D 10s infinite linear; overflow: hidden;}
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1599420186946-7b6fb4e7e76e?q=80&w=1600&auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center; z-index: -1; animation: bgPan 20s infinite linear; opacity: 0.6;}
+        .hero h1 { font-size: 55px; color: var(--accent); text-shadow: 2px 2px 15px rgba(255, 215, 0, 0.8); transform: translateZ(50px); margin-bottom: 10px;}
+        .hero p { font-size: 20px; color: #aaa; transform: translateZ(30px); margin-bottom: 30px;}
+        .icon-track { position: absolute; top: 50%; left: -100px; width: 200%; height: 60px; pointer-events: none; z-index: 1; animation: iconStream 15s infinite linear;}
+        .stream-icon { position: absolute; font-size: 40px; color: rgba(255, 215, 0, 0.6); text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);}
+        .icon-1 { left: 0%; top: 0px; }
+        .icon-2 { left: 25%; top: 20px; }
+        .icon-3 { left: 50%; top: -10px; }
+        .icon-4 { left: 75%; top: 15px; }
+        .btn { display: inline-block; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; width: calc(100% - 60px); text-align: center; transform: translateZ(40px);}
+        .wa { background: #25D366; color: white; border: none; }
+        .btn:hover { transform: scale(1.08) translateZ(50px); box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5); }
+        .booking-btn-main { background: var(--accent); color: black; margin-top: 30px;}
+        .booking-btn-main:hover { transform: scale(1.08) translateZ(50px); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5); }
+        @keyframes hero3D { 0% { transform: rotateY(-1deg); } 50% { transform: rotateY(1deg); } 100% { transform: rotateY(-1deg); } }
+        @keyframes bgPan { 0% { background-position: center 0%; } 100% { background-position: center 100%; } }
+        @keyframes iconStream { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @media (max-width: 600px) { .hero h1 { font-size: 36px; } header { flex-direction: column; text-align: center; } header .nav { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; } }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="brand">⚡ Volt & Chill</div>
-        <div style="color: var(--accent); font-weight: bold;">0311-8079337</div>
+        <a href="#" class="brand">⚡ Volt & Chill</a>
+        <div class="nav">
+            <a href="tel:+923118079337" style="color:var(--accent); text-decoration:none; font-weight:bold;">0311-8079337</a>
+            <a href="#services" style="color:white; text-decoration:none;">Services</a>
+            <a href="#booking" style="color:white; text-decoration:none;">Book Now</a>
+        </div>
     </header>
-
+    
     <section class="hero">
-        <h1>Fast, Clean Electrical & AC Servicing</h1>
-        <p>Expert solutions for your home and office in Karachi.</p>
-        <div style="max-width: 300px; margin: 30px auto;">
-            <a href="tel:+923118079337" class="btn btn-call">Book a Visit Now</a>
+        <div class="hero-bg"></div>
+        <div class="icon-track">
+            <span class="stream-icon icon-1">⚡</span>
+            <span class="stream-icon icon-2">❄️</span>
+            <span class="stream-icon icon-3">🛠️</span>
+            <span class="stream-icon icon-4">🔌</span>
+            <span class="stream-icon icon-1" style="left:100%">⚡</span>
+            <span class="stream-icon icon-2" style="left:125%">❄️</span>
+            <span class="stream-icon icon-3" style="left:150%">🛠️</span>
+            <span class="stream-icon icon-4" style="left:175%">🔌</span>
+        </div>
+        <h1>Expert AC & Electrical Services Karachi</h1>
+        <p>Your 24/7 Trusted Partner for Precision Wiring and Better Cooling. Professional craftsmanship with neat finish.</p>
+        <div style="max-width: 400px; margin: auto;">
+            <a href="#booking" class="btn booking-btn-main">Book an Expert Visit</a>
         </div>
     </section>
 
-    <section class="section">
-        <h2 style="text-align:center; color: var(--accent);">Our Professional Services</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>AC Service & Repair</h3>
-                <p>Deep cleaning, gas refilling, and leak fixing for all inverter and split models.</p>
-                <span class="price">From PKR 3,500</span>
-                <a href="https://wa.me/923118079337?text=Hi, I need AC service." class="btn btn-wa">Order via WhatsApp</a>
-            </div>
-            <div class="card">
-                <h3>Electrical Rewiring</h3>
-                <p>New circuits, DB organization, and fault finding with 8+ years experience.</p>
-                <span class="price">From PKR 1,500</span>
-                <a href="https://wa.me/923118079337?text=Hi, I need electrical work." class="btn btn-wa">Order via WhatsApp</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #0a0a0a;">
-        <h2 style="text-align:center; color: var(--accent);">What Our Clients Say</h2>
-        <div class="review">"Rizwan bhai did a great job with my house wiring. Very neat and professional work!" - <strong>Ahmed, Gulshan</strong></div>
-        <div class="review">"Best AC service in Karachi. My inverter is cooling like new now." - <strong>Sana, Johar</strong></div>
-    </section>
-
-    <section class="section">
-        <h2 style="text-align:center; color: var(--accent);">Frequently Asked Questions</h2>
-        <div class="faq"><strong>Q: Do you provide emergency services?</strong><br>A: Yes, we are available 24/7 for electrical emergencies in Karachi.</div>
-        <div class="faq"><strong>Q: Is there a warranty on labor?</strong><br>A: We provide a satisfaction guarantee on all our repair works.</div>
-    </section>
-
-    <a href="https://wa.me/923118079337" class="whatsapp-float">💬</a>
-
-    <footer>
-        <p><strong>Volt & Chill</strong> - Karachi, Pakistan</p>
-        <p>Contact: Muhammad Rizwan | 0311-8079337</p>
-        <p>© 2026 Professional AC & Electrical Technician</p>
-    </footer>
-
-</body>
+    </body>
 </html>
