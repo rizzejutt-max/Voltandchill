@@ -3,90 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volt & Chill | Expert AC & Electrical</title>
+  <title>Volt & Chill | Expert AC & Electrical Services in Karachi</title>
   <style>
-    :root { 
-      --bg: #000000; 
-      --accent: #FFD700; /* Gold/Yellow */
-      --card: #1a1a1a; 
-      --text: #ffffff;
-    }
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      text-align: center; 
-      margin: 0; 
-      padding: 20px; 
-    }
-    header {
-      padding: 30px 0;
-      border-bottom: 2px solid var(--accent);
-    }
-    .brand {
-      font-size: 35px;
-      font-weight: bold;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .card { 
-      background: var(--card); 
-      border: 2px solid var(--accent); 
-      border-radius: 20px; 
-      padding: 40px 20px; 
-      max-width: 450px; 
-      margin: 50px auto; 
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-    }
-    h3 { color: var(--accent); font-size: 24px; margin-top: 0; }
-    p { color: #cccccc; font-size: 18px; }
-    .btn { 
-      display: block; 
-      padding: 18px; 
-      margin: 20px 0; 
-      border-radius: 12px; 
-      text-decoration: none; 
-      font-weight: bold; 
-      font-size: 18px;
-      transition: 0.3s; 
-    }
-    .wa { 
-      background: #25D366; 
-      color: white;
-    }
-    .call { 
-      background: var(--accent); 
-      color: black; 
-    }
-    .btn:hover { transform: scale(1.05); opacity: 0.9; }
-    footer { 
-      margin-top: 60px; 
-      font-size: 14px; 
-      color: var(--accent); 
-      opacity: 0.7;
-    }
+    :root { --bg: #000000; --accent: #FFD700; --card: #1a1a1a; --text: #ffffff; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; box-sizing: border-box; }
+    header { padding: 15px 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--bg); z-index: 1000; }
+    .brand { font-size: 24px; font-weight: bold; color: var(--accent); text-decoration: none; }
+    .nav { display: flex; gap: 15px; }
+    .nav a { color: var(--text); text-decoration: none; font-size: 14px; transition: 0.3s; }
+    .nav a:hover { color: var(--accent); }
+    .hero { padding: 60px 20px; text-align: center; border-bottom: 1px solid rgba(255, 215, 0, 0.1); }
+    .hero h1 { color: var(--accent); font-size: 36px; margin-bottom: 10px; }
+    .hero p { color: #cccccc; font-size: 18px; max-width: 700px; margin: auto; }
+    .section-title { color: var(--accent); margin-top: 50px; font-size: 28px; }
+    .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; }
+    .card { background: var(--card); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 20px; padding: 30px; width: 300px; text-align: left; }
+    .card h3 { color: var(--accent); margin-top: 0; }
+    .card p { color: #aaaaaa; }
+    .pricing-card { border-color: rgba(255, 215, 0, 0.5); }
+    .price-tag { color: var(--accent); font-size: 22px; font-weight: bold; }
+    .btn { display: inline-block; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; margin-top: 20px; width: calc(100% - 60px); text-align: center;}
+    .wa { background: #25D366; color: white; border: none; }
+    .btn:hover { transform: scale(1.05); }
+    .booking-btn-main { background: var(--accent); color: black; margin-top: 30px;}
+    footer { margin-top: 80px; padding: 40px 20px; background: #111; border-top: 2px solid var(--accent); font-size: 14px; text-align: left; }
+    .footer-content { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+    .footer-col h4 { color: var(--accent); margin-top: 0; }
+    .footer-col p { color: #888; margin: 5px 0; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; }
+    @media (max-width: 600px) { .hero h1 { font-size: 28px; } header { flex-direction: column; text-align: center; } .nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; } }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">⚡ Volt & Chill</div>
-    <p style="margin-top:10px;">Karachi's Trusted AC & Electrical Experts</p>
+    <a href="#" class="brand">⚡ Volt & Chill</a>
+    <div class="nav">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#booking">Book Now</a>
+    </div>
   </header>
   
-  <div class="card">
-    <h3>Professional Services</h3>
-    <p>AC Repairing | House Wiring | 24/7 Emergency</p>
-    
-    <a href="https://wa.me/923118079337?text=Hello%20Volt%20%26%20Chill%2C%20I%20need%20to%20book%20a%20service." class="btn wa">
-      💬 Chat on WhatsApp
-    </a>
-    
-    <a href="tel:+923118079337" class="btn call">
-      📞 Call Now: 0311-8079337
-    </a>
+  <section class="hero">
+    <h1>Premium AC & Electrical Technician Services in Karachi</h1>
+    <p>Fast, reliable, and neat craftsmanship. 8+ years of experience in multi-story buildings and construction.</p>
+    <a href="#booking" class="btn booking-btn-main">Book a Free Estimate</a>
+  </section>
+
+  <div class="container" id="services">
+    <h2 class="section-title">Our Expert Services</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>AC Servicing & Repair</h3>
+        <p>Deep Chemical Wash, Gas Top-up (R22, R410a), Leak Detection, and Preventative Maintenance. Low electricity bills, 100% chilled air guaranteed.</p>
+        <a href="https://wa.me/923118079337?text=Hi%20Volt%26Chill%2C%20I%20need%20AC%20service." class="btn wa">Book via WhatsApp</a>
+      </div>
+      <div class="card">
+        <h3>Electrical Works</h3>
+        <p>Short Circuit diagnosis, Complete House Rewiring, DB Panel Organization, UPS & Solar installation. Neat workmanship and code-compliant.</p>
+        <a href="https://wa.me/923118079337?text=Hi%20Volt%26Chill%2C%20I%20need%20Electrical%20service." class="btn wa">Book via WhatsApp</a>
+      </div>
+    </div>
   </div>
 
-  <footer>© 2026 Volt & Chill - Karachi, Pakistan</footer>
+  <div class="container" id="pricing">
+    <h2 class="section-title">Starter Pricing (Clear & Fair)</h2>
+    <div class="card-container">
+      <div class="card pricing-card">
+        <h3>Diagnostic Visit</h3>
+        <p>Perfect for quick checks and minor fixes. Fault identification.</p>
+        <p class="price-tag">from PKR 1,500</p>
+      </div>
+      <div class="card pricing-card">
+        <h3>AC Deep Clean</h3>
+        <p>Filter, Coil, and Blower cleaning. Drain line flush. Performance test.</p>
+        <p class="price-tag">from PKR 3,500</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="booking" style="padding:40px;">
+    <h2 class="section-title">Book your visit now</h2>
+    <div style="background:#121a31; padding:30px; border-radius:20px; max-width:600px; margin:auto;">
+    <p>Simply click the button below to message us your name, address, and the issue. We'll confirm the slot instantly.</p>
+    <a href="https://wa.me/923118079337?text=Hello%20Volt%20%26%20Chill%2C%20I%20would%20like%20to%20book%20a%20technician.%20My%20details%20are%3A%0A%0A-%20Name%3A%20%0A-%20Phone%3A%200311-8079337%0A-%20Service%3A%20%0A-%20Address%3A%20%0A-%20Details%3A%20" class="btn wa">Send Details on WhatsApp</a>
+    <p style="margin-top:20px;">Or call us directly:</p>
+    <a href="tel:+923118079337" class="btn booking-btn-main">📞 Call Muhammad Rizwan: 0311-8079337</a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/923118079337" class="whatsapp-float">💬</a>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Volt & Chill</h4>
+        <p>Safe wiring. Better cooling.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <p>Muhammad Rizwan</p>
+        <p>Phone: 0311-8079337</p>
+        <p>Karachi, Sindh, Pakistan</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#services" style="color:#aaa; text-decoration:none; display:block;">Services</a>
+        <a href="#pricing" style="color:#aaa; text-decoration:none; display:block;">Pricing</a>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:30px; color:#666; font-size:12px;">© 2026 Volt & Chill. Karachi. All Rights Reserved.</div>
+  </footer>
 </body>
 </html>
