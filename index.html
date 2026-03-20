@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Volt & Chill | Premium AC & Electrical Services</title>
-  <meta name="description" content="Volt & Chill offers expert AC servicing, electrical solutions, and 24/7 emergency repairs in Karachi. Call 0311-8079337." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volt & Chill | Expert AC & Electrical</title>
   <style>
-    :root{
-      --bg:#0b1020; --card:#121a31; --text:#eef3ff; --primary:#3bc7ff; --secondary:#7ef29a; --danger:#ff5f7a; --radius:18px;
+    :root { 
+      --bg: #000000; 
+      --accent: #FFD700; /* Gold/Yellow */
+      --card: #1a1a1a; 
+      --text: #ffffff;
     }
-    body{ margin:0; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-    .container{ width:90%; max-width:1100px; margin:auto; padding:20px 0; }
-    header{ background:rgba(8,12,24,0.9); padding:15px 0; position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,0.1); }
-    .brand{ font-size:24px; font-weight:700; color:var(--primary); text-decoration:none; display:flex; align-items:center; gap:10px; }
-    .hero{ padding:60px 0; text-align:center; background:linear-gradient(rgba(11,16,32,0.8),rgba(11,16,32,0.8)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80'); background-size:cover; }
-    h1{ font-size:36px; margin-bottom:10px; }
-    .service-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-top:40px; }
-    .card{ background:var(--card); padding:25px; border-radius:var(--radius); border:1px solid rgba(255,255,255,0.1); transition:0.3s; }
-    .card:hover{ transform:translateY(-10px); border-color:var(--primary); }
-    .btn-wa{ display:block; text-align:center; padding:12px; margin-top:10px; border-radius:10px; text-decoration:none; font-weight:600; color:#fff; }
-    .wa1{ background:#25D366; } .wa2{ background:#128C7E; }
-    .btn-call{ display:block; text-align:center; padding:15px; background:var(--danger); color:#fff; text-decoration:none; border-radius:10px; font-weight:700; margin-top:20px; }
-    footer{ text-align:center; padding:30px; border-top:1px solid rgba(255,255,255,0.1); font-size:14px; color:rgba(255,255,255,0.5); }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      text-align: center; 
+      margin: 0; 
+      padding: 20px; 
+    }
+    header {
+      padding: 30px 0;
+      border-bottom: 2px solid var(--accent);
+    }
+    .brand {
+      font-size: 35px;
+      font-weight: bold;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .card { 
+      background: var(--card); 
+      border: 2px solid var(--accent); 
+      border-radius: 20px; 
+      padding: 40px 20px; 
+      max-width: 450px; 
+      margin: 50px auto; 
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+    h3 { color: var(--accent); font-size: 24px; margin-top: 0; }
+    p { color: #cccccc; font-size: 18px; }
+    .btn { 
+      display: block; 
+      padding: 18px; 
+      margin: 20px 0; 
+      border-radius: 12px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 18px;
+      transition: 0.3s; 
+    }
+    .wa { 
+      background: #25D366; 
+      color: white;
+    }
+    .call { 
+      background: var(--accent); 
+      color: black; 
+    }
+    .btn:hover { transform: scale(1.05); opacity: 0.9; }
+    footer { 
+      margin-top: 60px; 
+      font-size: 14px; 
+      color: var(--accent); 
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="container"><a href="#" class="brand">⚡ Volt & Chill</a></div>
+    <div class="brand">⚡ Volt & Chill</div>
+    <p style="margin-top:10px;">Karachi's Trusted AC & Electrical Experts</p>
   </header>
-  <section class="hero">
-    <div class="container">
-      <h1>Premium AC & Electrical Services</h1>
-      <p>Karachi's trusted experts for cooling and safety. Available 24/7.</p>
-    </div>
-  </section>
-  <div class="container">
-    <div class="service-grid">
-      <div class="card">
-        <h3>❄️ AC Service & Repair</h3>
-        <p>Chemical Wash, Gas Refill (R22/R410), and Inverter Specialist.</p>
-        <a href="https://wa.me/923118079337?text=AC%20Service%20Booking" class="btn-wa wa1">Chat on WhatsApp 1</a>
-        <a href="https://wa.me/923442746681?text=AC%20Service%20Booking" class="btn-wa wa2">Chat on WhatsApp 2</a>
-      </div>
-      <div class="card">
-        <h3>⚡ Electrical Solutions</h3>
-        <p>House Wiring, DB Panels, UPS & Solar Installation.</p>
-        <a href="https://wa.me/923118079337?text=Electrician%20Booking" class="btn-wa wa1">Chat on WhatsApp 1</a>
-        <a href="https://wa.me/923442746681?text=Electrician%20Booking" class="btn-wa wa2">Chat on WhatsApp 2</a>
-      </div>
-      <div class="card" style="border-color:var(--danger);">
-        <h3>🚨 Emergency Help</h3>
-        <p>Short circuit or sudden AC breakdown? Call us now!</p>
-        <a href="tel:+923118079337" class="btn-call">📞 Call 0311-8079337</a>
-      </div>
-    </div>
+  
+  <div class="card">
+    <h3>Professional Services</h3>
+    <p>AC Repairing | House Wiring | 24/7 Emergency</p>
+    
+    <a href="https://wa.me/923118079337?text=Hello%20Volt%20%26%20Chill%2C%20I%20need%20to%20book%20a%20service." class="btn wa">
+      💬 Chat on WhatsApp
+    </a>
+    
+    <a href="tel:+923118079337" class="btn call">
+      📞 Call Now: 0311-8079337
+    </a>
   </div>
-  <footer>© <span id="year"></span> Volt & Chill. Karachi, Pakistan.</footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <footer>© 2026 Volt & Chill - Karachi, Pakistan</footer>
 </body>
 </html>
