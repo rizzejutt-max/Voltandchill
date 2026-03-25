@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volt & Chill | Expert Services & Marketplace</title>
+    <title>Volt & Chill | 10 Years Expert AC & Electrical Karachi</title>
+    <meta name="description" content="Professional Solar, AC, and Electrical services in Karachi. 10 years experience by Muhammad Rizwan. Expert in MPPT, PV Inverters, and DB Dressing.">
     <style>
         :root { --bg: #000000; --accent: #FFD700; --card: #121a31; --text: #ffffff; --wa: #25D366; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 20px; line-height: 1.6; }
         header { padding: 15px 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; background: #000; position: sticky; top: 0; z-index: 1000; }
         .brand { font-size: 22px; font-weight: bold; color: var(--accent); }
         .nav-btn { background: var(--accent); color: #000; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
@@ -19,38 +20,44 @@
         #chat-header { background: var(--accent); color: #000; padding: 10px; font-weight: bold; border-radius: 15px 15px 0 0; }
         #chat-content { padding: 15px; height: 200px; overflow-y: auto; font-size: 14px; }
         .chat-toggle { position: fixed; bottom: 20px; right: 20px; background: var(--accent); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; cursor: pointer; z-index: 2001; }
+        
+        #marketplace-grid img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="brand">⚡ Volt & Chill</div>
-        <button class="nav-btn" onclick="googleLogin()">Login / Sell</button>
+        <div>
+            <button class="nav-btn" onclick="uploadItem()">Sell Item</button>
+            <button class="nav-btn" onclick="googleLogin()">Login</button>
+        </div>
     </header>
 
     <section class="section">
         <div class="card">
-            <h2>Our Expert Services</h2>
-            <p>10 years experience in Solar, AC & Electrical Wiring.</p>
-            <div id="services-list">
-                <p>• AC Service & Inverter Repair</p>
-                <p>• Electrical DB Dressing & Wiring</p>
-                <p>• Solar MPPT & UPS Setup</p>
-            </div>
+            <h2 style="color: var(--accent);">Hamari Mahaarat (Expertise)</h2>
+            <p>Assalam-o-Alaikum! Main Muhammad Rizwan hoon. Karachi mein pichle 10 saalon se electrical aur cooling solutions mein professional kaam kar raha hoon.</p>
+            <ul style="padding-left: 20px;">
+                <li><strong>Solar Energy:</strong> MPPT charge controllers aur PV Inverters ki advanced settings.</li>
+                <li><strong>AC Services:</strong> Inverter AC repair, gas charging aur service.</li>
+                <li><strong>Electrical:</strong> DB dressing, concealed wiring aur residential electrical maintenance.</li>
+            </ul>
         </div>
 
-        <h2 style="color: var(--accent);">Marketplace</h2>
-        <div id="marketplace-grid" style="display: grid; gap: 15px;">
-            <p style="font-size: 14px; color: #777;">Login karke apni items upload karein...</p>
+        <h2 style="color: var(--accent); text-align: center;">Marketplace</h2>
+        <div id="marketplace-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+            <p style="font-size: 14px; color: #777;">Loading items...</p>
         </div>
     </section>
 
     <div id="chatbot">
         <div id="chat-header">VoltBot Assistant</div>
         <div id="chat-content">
-            <p>Assalam-o-Alaikum! Kya help chahiye?</p>
-            <button onclick="askBot('AC')" style="width:100%; margin-bottom:5px;">AC Service</button>
-            <button onclick="askBot('Solar')" style="width:100%;">Solar Setup</button>
+            <p>Assalam-o-Alaikum! Aapko kis bare mein help chahiye?</p>
+            <button onclick="askBot('AC Service')" style="width:100%; margin-bottom:5px;">AC Repairing</button>
+            <button onclick="askBot('Solar Setup')" style="width:100%; margin-bottom:5px;">Solar Installation</button>
+            <button onclick="askBot('Electrical Wiring')" style="width:100%;">Electrical Work</button>
         </div>
     </div>
 
@@ -61,26 +68,29 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <script>
-        // APNA FIREBASE CONFIG CODE YAHAN PASTE KAREIN
+        // Aapka Firebase Config
         const firebaseConfig = {
-            apiKey: "AIza...",
+            apiKey: "AIza...", // Yahan apni API Key check kar lein
             authDomain: "voltandchill.firebaseapp.com",
             projectId: "voltandchill",
             storageBucket: "voltandchill.appspot.com",
-            messagingSenderId: "...",
-            appId: "..."
+            messagingSenderId: "827659533893",
+            appId: "1:827659533893:web:..."
         };
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
+        const db = firebase.firestore();
 
+        // Login Function
         function googleLogin() {
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider).then((res) => {
-                alert("Khush Amdeed " + res.user.displayName);
+                alert("Khush Amdeed " + res.user.displayName + "!");
             });
         }
 
+        // Chatbot Function
         function toggleChat() {
             const c = document.getElementById('chatbot');
             c.style.display = (c.style.display === 'flex') ? 'none' : 'flex';
@@ -88,59 +98,52 @@
 
         function askBot(service) {
             const cont = document.getElementById('chat-content');
-            cont.innerHTML = `<p>Theek hai! Humare expert aapse WhatsApp par rabta karenge.</p>
-            <a href="https://wa.me/923118079337?text=Mujhe ${service} service chahiye" class="btn-wa">WhatsApp</a>`;
+            cont.innerHTML = `<p>G bilkul! Hum ${service} mein expert hain. WhatsApp par mazeed baat karte hain.</p>
+            <a href="https://wa.me/923118079337?text=Mujhe ${service} ke bare mein maloomat chahiye" class="btn-wa">WhatsApp Chat</a>`;
         }
+
+        // Marketplace Load Items
+        function loadItems() {
+            db.collection("market_items").orderBy("date", "desc").onSnapshot((snapshot) => {
+                let grid = document.getElementById('marketplace-grid');
+                grid.innerHTML = "";
+                if (snapshot.empty) {
+                    grid.innerHTML = "<p>Abhi koi item dastyab nahi hai.</p>";
+                }
+                snapshot.forEach((doc) => {
+                    let item = doc.data();
+                    grid.innerHTML += `
+                        <div class="card" style="padding: 15px; border-radius: 12px; background: #1a2233;">
+                            <img src="${item.image || 'https://via.placeholder.com/150'}" alt="Item">
+                            <h4 style="margin: 5px 0; color:var(--accent);">${item.title}</h4>
+                            <p style="font-size: 13px; color: #ccc;">${item.details}</p>
+                            <a href="https://wa.me/923118079337?text=Mujhe ye pasand hai: ${item.title}" class="btn-wa" style="padding: 8px; font-size: 13px;">WhatsApp for Price</a>
+                        </div>`;
+                });
+            });
+        }
+
+        // Upload Item Function
+        async function uploadItem() {
+            if(!auth.currentUser) {
+                alert("Pehle Login button par click karke login karein!");
+                return;
+            }
+            const title = prompt("Item ka naam (e.g. 1.5 Ton AC):");
+            const details = prompt("Mazeed tafseel (Condition aur Price):");
+            if(title && details) {
+                await db.collection("market_items").add({
+                    title: title,
+                    details: details,
+                    date: new Date(),
+                    image: ""
+                });
+                alert("Aapka item marketplace par add ho gaya!");
+            }
+        }
+
+        window.onload = loadItems;
     </script>
 </body>
 </html>
-  // 1. Firebase Config (Console se mila hua code yahan paste karein)
-  const firebaseConfig = {
-    apiKey: "AIza...", 
-    authDomain: "voltandchill.firebaseapp.com",
-    projectId: "voltandchill",
-    storageBucket: "voltandchill.appspot.com",
-    messagingSenderId: "827659533893",
-    appId: "1:827659533893:web:..."
-  };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  // 2. Marketplace items load karne ka function
-  function loadItems() {
-    db.collection("market_items").orderBy("date", "desc").onSnapshot((snapshot) => {
-        let grid = document.getElementById('marketplace-grid');
-        grid.innerHTML = ""; // Purana data saaf karein
-        snapshot.forEach((doc) => {
-            let item = doc.data();
-            grid.innerHTML += `
-                <div class="card" style="border: 1px solid #333; padding: 10px; border-radius: 12px; background: #1a2233;">
-                    <img src="${item.image || 'https://via.placeholder.com/150'}" style="width: 100%; border-radius: 8px;">
-                    <h4 style="margin: 10px 0; color:var(--accent);">${item.title}</h4>
-                    <p style="font-size: 13px;">${item.details}</p>
-                    <a href="https://wa.me/923118079337?text=Mujhe ye item chahiye: ${item.title}" class="btn-wa" style="padding: 8px; font-size: 13px;">WhatsApp</a>
-                </div>`;
-        });
-    });
-  }
-
-  // Page load hote hi items dikhayen
-  window.onload = loadItems;
-
-  // 3. Simple Image Upload aur Data Save function
-  async function uploadItem() {
-    const title = prompt("Item ka naam (e.g. Second hand AC):");
-    const details = prompt("Details (Condition aur Price):");
-    
-    if(title && details) {
-        await db.collection("market_items").add({
-            title: title,
-            details: details,
-            date: new Date(),
-            image: "" // Abhi ke liye empty, login ke baad file upload bhi chal jayega
-        });
-        alert("Item upload ho gaya!");
-    }
-  }
-  
