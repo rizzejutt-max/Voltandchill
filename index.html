@@ -1,16 +1,15 @@
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volt & Chill | 10 Years Expert AC & Electrical Karachi</title>
-    <meta name="description" content="Professional Solar, AC, and Electrical services in Karachi. 10 years experience by Muhammad Rizwan. Expert in MPPT, PV Inverters, and DB Dressing.">
+    <title>Volt & Chill | Expert AC & Electrical Karachi</title>
     <style>
         :root { --bg: #000000; --accent: #FFD700; --card: #121a31; --text: #ffffff; --wa: #25D366; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 20px; line-height: 1.6; }
         header { padding: 15px 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; background: #000; position: sticky; top: 0; z-index: 1000; }
         .brand { font-size: 22px; font-weight: bold; color: var(--accent); }
-        .nav-btn { background: var(--accent); color: #000; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
+        .nav-btn { background: var(--accent); color: #000; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; font-size: 14px; }
         .section { padding: 30px 20px; max-width: 800px; margin: auto; }
         .card { background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); margin-bottom: 20px; }
         .btn-wa { background: var(--wa); color: white; padding: 12px; border-radius: 10px; text-decoration: none; display: block; text-align: center; font-weight: bold; margin-top: 15px; }
@@ -41,7 +40,7 @@
             <ul style="padding-left: 20px;">
                 <li><strong>Solar Energy:</strong> MPPT charge controllers aur PV Inverters ki advanced settings.</li>
                 <li><strong>AC Services:</strong> Inverter AC repair, gas charging aur service.</li>
-                <li><strong>Electrical:</strong> DB dressing, concealed wiring aur residential electrical maintenance.</li>
+                <li><strong>Electrical:</strong> DB dressing, concealed wiring aur maintenance.</li>
             </ul>
         </div>
 
@@ -55,9 +54,9 @@
         <div id="chat-header">VoltBot Assistant</div>
         <div id="chat-content">
             <p>Assalam-o-Alaikum! Aapko kis bare mein help chahiye?</p>
-            <button onclick="askBot('AC Service')" style="width:100%; margin-bottom:5px;">AC Repairing</button>
-            <button onclick="askBot('Solar Setup')" style="width:100%; margin-bottom:5px;">Solar Installation</button>
-            <button onclick="askBot('Electrical Wiring')" style="width:100%;">Electrical Work</button>
+            <button onclick="askBot('AC Service')" style="width:100%; margin-bottom:5px; cursor:pointer;">AC Repairing</button>
+            <button onclick="askBot('Solar Setup')" style="width:100%; margin-bottom:5px; cursor:pointer;">Solar Installation</button>
+            <button onclick="askBot('Electrical Work')" style="width:100%; cursor:pointer;">Electrical Work</button>
         </div>
     </div>
 
@@ -68,29 +67,30 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <script>
-        // Aapka Firebase Config
+        // Aapka Update Shuda Firebase Config
         const firebaseConfig = {
-            apiKey: "AIza...", // Yahan apni API Key check kar lein
+            apiKey: "AIzaSyArFRT6wn6bPhCrIiDucbXxojJQ1-BN_3I",
             authDomain: "voltandchill.firebaseapp.com",
             projectId: "voltandchill",
-            storageBucket: "voltandchill.appspot.com",
+            storageBucket: "voltandchill.firebasestorage.app",
             messagingSenderId: "827659533893",
-            appId: "1:827659533893:web:..."
+            appId: "1:827659533893:web:ec0f08f744bc854692ed2c",
+            measurementId: "G-WHQDGD42JH"
         };
 
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // Login Function
         function googleLogin() {
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider).then((res) => {
                 alert("Khush Amdeed " + res.user.displayName + "!");
+            }).catch((error) => {
+                alert("Login Error: " + error.message);
             });
         }
 
-        // Chatbot Function
         function toggleChat() {
             const c = document.getElementById('chatbot');
             c.style.display = (c.style.display === 'flex') ? 'none' : 'flex';
@@ -98,11 +98,10 @@
 
         function askBot(service) {
             const cont = document.getElementById('chat-content');
-            cont.innerHTML = `<p>G bilkul! Hum ${service} mein expert hain. WhatsApp par mazeed baat karte hain.</p>
+            cont.innerHTML = `<p>G bilkul! Hum ${service} mein expert hain. WhatsApp par rabta karein.</p>
             <a href="https://wa.me/923118079337?text=Mujhe ${service} ke bare mein maloomat chahiye" class="btn-wa">WhatsApp Chat</a>`;
         }
 
-        // Marketplace Load Items
         function loadItems() {
             db.collection("market_items").orderBy("date", "desc").onSnapshot((snapshot) => {
                 let grid = document.getElementById('marketplace-grid');
@@ -123,7 +122,6 @@
             });
         }
 
-        // Upload Item Function
         async function uploadItem() {
             if(!auth.currentUser) {
                 alert("Pehle Login button par click karke login karein!");
@@ -146,4 +144,3 @@
     </script>
 </body>
 </html>
-
