@@ -3,28 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volt & Chill | Expert AC & Electrical Karachi</title>
+    <title>Volt & Chill | Expert AC & Electrical</title>
     <style>
         :root { --bg: #000000; --accent: #FFD700; --card: #121a31; --text: #ffffff; --wa: #25D366; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 20px; line-height: 1.6; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 50px; line-height: 1.6; }
         header { padding: 15px 20px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; background: #000; position: sticky; top: 0; z-index: 1000; }
         .brand { font-size: 22px; font-weight: bold; color: var(--accent); }
-        .nav-btn { background: var(--accent); color: #000; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; font-size: 14px; }
-        .section { padding: 30px 20px; max-width: 800px; margin: auto; }
-        .card { background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); margin-bottom: 20px; }
+        .nav-btn { background: var(--accent); color: #000; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; }
+        .section { padding: 30px 20px; max-width: 900px; margin: auto; }
+        .card { background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 215, 0, 0.2); margin-bottom: 30px; }
         .btn-wa { background: var(--wa); color: white; padding: 12px; border-radius: 10px; text-decoration: none; display: block; text-align: center; font-weight: bold; margin-top: 15px; }
-        
-        /* Chatbot Style */
-        #chatbot { position: fixed; bottom: 85px; right: 20px; width: 280px; background: #1c2641; border: 1px solid var(--accent); border-radius: 15px; display: none; flex-direction: column; z-index: 2000; }
-        #chat-header { background: var(--accent); color: #000; padding: 10px; font-weight: bold; border-radius: 15px 15px 0 0; }
-        #chat-content { padding: 15px; height: 200px; overflow-y: auto; font-size: 14px; }
-        .chat-toggle { position: fixed; bottom: 20px; right: 20px; background: var(--accent); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; cursor: pointer; z-index: 2001; }
-        
-        #marketplace-grid img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-
     <header>
         <div class="brand">⚡ Volt & Chill</div>
         <div>
@@ -32,114 +23,57 @@
             <button class="nav-btn" onclick="googleLogin()">Login</button>
         </div>
     </header>
-
     <section class="section">
         <div class="card">
-            <h2 style="color: var(--accent);">Hamari Mahaarat (Expertise)</h2>
-            <p>Assalam-o-Alaikum! Main Muhammad Rizwan hoon. Karachi mein pichle 10 saalon se electrical aur cooling solutions mein professional kaam kar raha hoon.</p>
-            <ul style="padding-left: 20px;">
-                <li><strong>Solar Energy:</strong> MPPT charge controllers aur PV Inverters ki advanced settings.</li>
-                <li><strong>AC Services:</strong> Inverter AC repair, gas charging aur service.</li>
-                <li><strong>Electrical:</strong> DB dressing, concealed wiring aur maintenance.</li>
-            </ul>
+            <h2 style="color: var(--accent);">Hamari Mahaarat</h2>
+            <p>Assalam-o-Alaikum! Karachi mein 10 saalon ka professional tajurba.</p>
         </div>
-
         <h2 style="color: var(--accent); text-align: center;">Marketplace</h2>
-        <div id="marketplace-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-            <p style="font-size: 14px; color: #777;">Loading items...</p>
+        <div id="marketplace-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <p style="text-align: center; grid-column: 1/-1;">Loading items...</p>
         </div>
     </section>
 
-    <div id="chatbot">
-        <div id="chat-header">VoltBot Assistant</div>
-        <div id="chat-content">
-            <p>Assalam-o-Alaikum! Aapko kis bare mein help chahiye?</p>
-            <button onclick="askBot('AC Service')" style="width:100%; margin-bottom:5px; cursor:pointer;">AC Repairing</button>
-            <button onclick="askBot('Solar Setup')" style="width:100%; margin-bottom:5px; cursor:pointer;">Solar Installation</button>
-            <button onclick="askBot('Electrical Work')" style="width:100%; cursor:pointer;">Electrical Work</button>
-        </div>
-    </div>
-
-    <div class="chat-toggle" onclick="toggleChat()">💬</div>
-
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 
     <script>
-        // Aapka Update Shuda Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyArFRT6wn6bPhCrIiDucbXxojJQ1-BN_3I",
             authDomain: "voltandchill.firebaseapp.com",
+            databaseURL: "https://voltandchill-default-rtdb.firebaseio.com",
             projectId: "voltandchill",
             storageBucket: "voltandchill.firebasestorage.app",
-            messagingSenderId: "827659533893",
-            appId: "1:827659533893:web:ec0f08f744bc854692ed2c",
-            measurementId: "G-WHQDGD42JH"
+            appId: "1:827659533893:web:ec0f08f744bc854692ed2c"
         };
-
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
-        const db = firebase.firestore();
+        const db = firebase.database();
 
         function googleLogin() {
             const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider).then((res) => {
-                alert("Khush Amdeed " + res.user.displayName + "!");
-            }).catch((error) => {
-                alert("Login Error: " + error.message);
-            });
-        }
-
-        function toggleChat() {
-            const c = document.getElementById('chatbot');
-            c.style.display = (c.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function askBot(service) {
-            const cont = document.getElementById('chat-content');
-            cont.innerHTML = `<p>G bilkul! Hum ${service} mein expert hain. WhatsApp par rabta karein.</p>
-            <a href="https://wa.me/923118079337?text=Mujhe ${service} ke bare mein maloomat chahiye" class="btn-wa">WhatsApp Chat</a>`;
+            auth.signInWithPopup(provider).then(() => location.reload())
+            .catch(() => alert("Login Error: Authorized Domains check karein."));
         }
 
         function loadItems() {
-            db.collection("market_items").orderBy("date", "desc").onSnapshot((snapshot) => {
-                let grid = document.getElementById('marketplace-grid');
+            db.ref("items").on("value", (snapshot) => {
+                const grid = document.getElementById('marketplace-grid');
                 grid.innerHTML = "";
-                if (snapshot.empty) {
-                    grid.innerHTML = "<p>Abhi koi item dastyab nahi hai.</p>";
-                }
-                snapshot.forEach((doc) => {
-                    let item = doc.data();
-                    grid.innerHTML += `
-                        <div class="card" style="padding: 15px; border-radius: 12px; background: #1a2233;">
-                            <img src="${item.image || 'https://via.placeholder.com/150'}" alt="Item">
-                            <h4 style="margin: 5px 0; color:var(--accent);">${item.title}</h4>
-                            <p style="font-size: 13px; color: #ccc;">${item.details}</p>
-                            <a href="https://wa.me/923118079337?text=Mujhe ye pasand hai: ${item.title}" class="btn-wa" style="padding: 8px; font-size: 13px;">WhatsApp for Price</a>
-                        </div>`;
+                if (!snapshot.exists()) { grid.innerHTML = "<p style='text-align:center;'>Koi item nahi hai.</p>"; return; }
+                snapshot.forEach((child) => {
+                    const item = child.val();
+                    grid.innerHTML += `<div class="card"><h4>${item.title}</h4><p>${item.details}</p><a href="https://wa.me/923118079337" class="btn-wa">WhatsApp</a></div>`;
                 });
             });
         }
-
-        async function uploadItem() {
-            if(!auth.currentUser) {
-                alert("Pehle Login button par click karke login karein!");
-                return;
-            }
-            const title = prompt("Item ka naam (e.g. 1.5 Ton AC):");
-            const details = prompt("Mazeed tafseel (Condition aur Price):");
-            if(title && details) {
-                await db.collection("market_items").add({
-                    title: title,
-                    details: details,
-                    date: new Date(),
-                    image: ""
-                });
-                alert("Aapka item marketplace par add ho gaya!");
-            }
+        function uploadItem() {
+            if(!auth.currentUser) { alert("Pehle Login karein!"); return; }
+            const title = prompt("Item Name:");
+            const details = prompt("Details:");
+            if(title) { db.ref("items").push({ title, details }); alert("Item add ho gaya!"); }
         }
-
         window.onload = loadItems;
     </script>
 </body>
